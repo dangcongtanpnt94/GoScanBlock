@@ -2,7 +2,8 @@
 
 * set GOPATH
 ```
-export GOPATH=$HOME/Go_scan_block
+cd {project_directory}
+export GOPATH=$(pwd)
 ```
 
 * run
