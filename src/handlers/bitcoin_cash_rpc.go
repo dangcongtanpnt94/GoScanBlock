@@ -5,11 +5,17 @@ import (
   "bytes"
   "encoding/json"
   "models"
-
+  "os"
+  "github.com/joho/godotenv"
 )
 
 func BitcoinCashRPC(payload []byte) []byte {
-  body, err := DoPost("http://bitcoin-rpc:bitcoin-rpc-pass@35.200.108.6:18332", payload)
+  err := godotenv.Load()
+  if err != nil {
+    panic("Error loading .env file")
+  }
+  body, err := DoPost(os.Getenv("BITCOIN_CASH_RPC_HOST"), payload)
+
   if err != nil {
     panic(err.Error)
   }
